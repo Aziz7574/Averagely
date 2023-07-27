@@ -1,42 +1,58 @@
 ﻿using System;
 
-namespace Space{
-    public class Program{
-        public static void Main()  
+namespace Space
+{
+    public class Program
+    {
+        public static void Main()
         {
-            Console.WriteLine("Enter your five grades that you have received from school");
+            Console.WriteLine("Do you want linear calculator or nonlinear(1 or 2)");
 
-            Console.WriteLine("Chemistry - >"); 
-            float chemistry = float.Parse(Console.ReadLine());  
+            string option = Console.ReadLine();
 
-            Console.WriteLine("Math - >"); 
-            float math = float.Parse(Console.ReadLine());  
+            if (option == "1")
+            {
+                Console.WriteLine("Enter how many numbers are you gonna calculate the average sum");
+                int number = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Geography - >"); 
-             float geography = float.Parse(Console.ReadLine());  
+                Console.WriteLine("Enter start of the numbers");
+                float start = float.Parse(Console.ReadLine());
 
+                Console.WriteLine("Enter the gap of each number");
+                float gap = float.Parse(Console.ReadLine());
+                float sum = 0;
+                float num = number;
 
-           Console.WriteLine("Pyhsic - >"); 
-                    float physic = float.Parse(Console.ReadLine());  
-
-            Console.WriteLine("IT - >"); 
-                    float it = float.Parse(Console.ReadLine());   
-
-            float average  = (it + physic + geography + math + chemistry)/5;   
-
-            if(average <= 5 && average >= 3){
-               Console.WriteLine($"Your average grade from every one  is {average}");
-               Console.WriteLine("You have passed the exam"); 
-               Console.WriteLine("Congratulations");
+                while (number > 0)
+                {
+                    sum += start;
+                    start += gap;
+                    number--;
+                }
+                Console.WriteLine($"Average sum of entered numbers - {sum / num}");
             }
-            else if(average >= 0 && average <= 3){
-                Console.WriteLine("You didn't pass");
-                Console.WriteLine("Please try again");
-            }
-            else
-            Console.WriteLine("Your grades could not qulify our standarts");
 
-            
+            else if (option == "2")
+            {
+                Console.WriteLine("Enter how many numbers are you gonna calculate");
+                int number = int.Parse(Console.ReadLine());
+                float sum = 0;
+
+                while (number > 0)
+                {
+                    Console.WriteLine("Enter the number");
+                    sum += float.Parse(Console.ReadLine());
+                    number--;
+                }
+                Console.WriteLine($"Sum of the numbers is {sum}");
+            }
+            Console.WriteLine("Type 1 to continue or anything to quit");
+            option = Console.ReadLine();
+            if (option == "1")
+                Main();
+            else return;
+
+
         }
     }
 }
